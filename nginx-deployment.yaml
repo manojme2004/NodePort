@@ -30,4 +30,4 @@ spec:
     name: webapp
   ports:
     - port: 8080
-      nodePort: 30007
+      nodePort: 30083

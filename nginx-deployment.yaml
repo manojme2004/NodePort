@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  webapp
+  labels:
+    app:  webapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webapp
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app:  webapp
+    spec:
+      containers:
+      - name:  nginx-webapp
+        image:  nginx:latest
+        resources: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  type: NodePort
+  selector:
+    name: webapp
+  ports:
+    - port: 8080
+      nodePort: 30007
